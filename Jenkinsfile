@@ -49,9 +49,13 @@ pipeline {
             """)
          }
       }
-      stage('Run Trivy'){
-         steps {
-            sh(script: "trivy jenkins-pipeline")
+      stage("Container scanning") {
+         parallel {
+            stage('Run Trivy') {
+               steps {
+                  sh(script: "trivy jenkins-pipeline")
+               }
+            }
          }
       }
    }

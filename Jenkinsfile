@@ -49,5 +49,10 @@ pipeline {
             """)
          }
       }
+      stage('Run Trivy'){
+         steps {
+            sh(script: "trivy jenkins-pipeline")
+         }
+      }
    }
 }
